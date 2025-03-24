@@ -1,2 +1,5 @@
-﻿  Employee.cpp
-  BeatySalong.vcxproj -> C:\Users\Sebastian\source\repos\BeatySalong\x64\Debug\BeatySalong.exe
+﻿  BeatySalong.cpp
+C:\Users\tuvar\OneDrive\Skrivbord\beauty-salong\BeatySalong\CustomerManager.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'BeatySalong.cpp')
+  
+  BeatySalong.vcxproj -> C:\Users\tuvar\OneDrive\Skrivbord\beauty-salong\x64\Debug\BeatySalong.exe

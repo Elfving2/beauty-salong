@@ -32,13 +32,12 @@ void CustomerManager::listAllCustomers()
     }
 }
 
-void CustomerManager::validateIfCustomerExists(const string & phonenumber)
+Customer CustomerManager::validateIfCustomerExists(const string & phonenumber)
 {
     for (Customer customer : customers) {
         cout << customer.getPhonenumber() << phonenumber << endl;
         if (customer.getPhonenumber() == phonenumber) {
-            customer.description();
-            return;
+            return customer;
         }
     }
     cout << "Customer dosent exist!" << endl;

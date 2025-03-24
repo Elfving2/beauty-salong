@@ -20,7 +20,6 @@ void EmployeeManager::parseEmployeeData(const string& employeeFileResult)
     for (const auto& line : lines) {
         vector<string> parts = split(line, ',');
         if (parts.size() == 4) {
-            // cout << "Parts: " << parts[0] << ", " << parts[1] << ", " << parts[2] << ", " << parts[3] << endl;
             employees.emplace_back(parts[0], parts[1], stoi(parts[2]), stoi(parts[3]));
         }
     }
@@ -31,5 +30,10 @@ void EmployeeManager::listAllEmployees() const
     for (Employee employee : employees) {
         employee.description();
     }
+}
+
+vector<Employee> EmployeeManager::getEmployees()
+{
+    return this->employees;
 }
 

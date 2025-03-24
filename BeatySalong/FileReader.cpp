@@ -18,9 +18,9 @@ void FileReader::writeToCustomerFile(const string& toWrite)
 
 void FileReader::writeToAppointmentFile(const string& toWrite)
 {
-	ofstream customerFile(this->appointmentFile, ios::app);
-	customerFile << toWrite << endl;
-	customerFile.close();
+	ofstream appointment(this->appointmentFile, ios::app);
+	appointment << toWrite << endl;
+	appointment.close();
 }
 
 string FileReader::readFromCustomerFile()

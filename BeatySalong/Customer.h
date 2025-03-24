@@ -12,6 +12,7 @@ public:
 	Customer(string firstname, string lastname, string phonenumber);
 	Customer();
 	~Customer();
+	Customer& operator=(const Customer& other);
 	const string getPhonenumber();
 	const string getInformation();
 	void description();

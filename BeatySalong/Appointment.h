@@ -17,11 +17,9 @@ class Appointment
 		Service * service;
 		string date;
 	public:
-		Appointment();
+		Appointment(Customer customer, Service * service, string date);
 		virtual ~Appointment();
-		string addAppointment(Customer customer, Service * service, string date);
-		//bool addAppointment(Customer customer, Haircut service, string date);
-		//bool addAppointment(Customer customer, Styling service, string date);
+		
 
 	};
 

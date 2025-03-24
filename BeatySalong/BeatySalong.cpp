@@ -1,6 +1,3 @@
-// BeatySalong.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include "FileReader.h"
 #include "Appointment.h"
@@ -14,8 +11,8 @@ using namespace std;
 
 void appointmentMenu() {
     cout << "1: Fillers" << endl;
-    cout << "2: Haircut" << endl;
-    cout << "3: Styling" << endl;
+    cout << "2: Styling" << endl;
+    cout << "3: Haircut" << endl;
 }
 
 void bookingProgram(string selection) 
@@ -71,18 +68,125 @@ void bookingProgram(string selection)
 
             switch (usrInput) {
                 case 1: {
-                    // Fillers
-                    // Choose your "worker"
-                    // Enter amount of ml
+                    string data = reader.readFromEmployeeFile();
+                    employeeManager.parseEmployeeData(data);
+                    employeeManager.listAllEmployees();
+                    
+                    cout << "Enter the employee you want to do the appointment" << endl;
+                    getline(cin, input);
+                    usrInput = stoi(input);
+
+                    if (usrInput >= 1 && usrInput <= 5) {
+                        Employee* selectedEmployee = new Employee(employeeManager.getEmployees()[usrInput - 1]);
+
+                        string mlOfFillers;
+                        string facePart;
+                        string date;
+
+                        cout << "How many mililiter of botox do you want?" << endl;
+                        getline(cin, mlOfFillers);
+
+                        cout << "What facepart do you want the botox?" << endl;
+                        getline(cin, facePart);
+
+                        cout << "Enter the date of the appointment" << endl;
+                        getline(cin, date);
+
+                        Service* fillers = new Fillers("Fillers", 40, 500, stoi(mlOfFillers), facePart, selectedEmployee);
+                        
+                        string phonenumber;
+                        cout << "Enter phonenumber" << endl;
+                        getline(cin, phonenumber);
+
+                        string data = reader.readFromCustomerFile();
+                        customerManager.parseCustomerData(data);
+                        Customer customer = customerManager.validateIfCustomerExists(phonenumber);
+
+                        reader.writeToAppointmentFile(customer.getInformation() + "," + fillers->getInformation() + "," + date);
+                    }
+                    break;  
+                }
+                case 2: {
                     string data = reader.readFromEmployeeFile();
                     employeeManager.parseEmployeeData(data);
                     employeeManager.listAllEmployees();
 
-                    // string nameOfService, int duration, int price, int mlOfFillers, string facePart, Employee * employee                  
-                    //Service * fillers = new Fillers();
+                    cout << "Enter the employee you want to do the appointment" << endl;
+                    getline(cin, input);
+                    usrInput = stoi(input);
+
+                    if (usrInput >= 1 && usrInput <= 5) {
+                        Employee* selectedEmployee = new Employee(employeeManager.getEmployees()[usrInput - 1]);
+
+                        string eyeShadowColor;
+                        string lipColor;
+                        string hairStyling;
+                        string date;
+
+                        cout << "Enter the eyeShadowColor" << endl;
+                        getline(cin, eyeShadowColor);
+
+                        cout << "Enter lipcolor" << endl;
+                        getline(cin, lipColor);
+
+                        cout << "Enter type of hairstyling" << endl;
+                        getline(cin, hairStyling);
+
+                        cout << "Enter the date of the appointment" << endl;
+                        getline(cin, date);
+
+                        Service* styling = new Styling("Styling", 50, 699, selectedEmployee, eyeShadowColor, lipColor, hairStyling);
+                       
+                        string phonenumber;
+                        cout << "Enter phonenumber" << endl;
+                        getline(cin, phonenumber);
+
+                        string data = reader.readFromCustomerFile();
+                        customerManager.parseCustomerData(data);
+                        Customer customer = customerManager.validateIfCustomerExists(phonenumber);
+
+
+                        reader.writeToAppointmentFile(customer.getInformation() + "," + styling->getInformation() + "," + date);
+                    }
                     break;
-                    
                 }
+                case 3: {
+                    string data = reader.readFromEmployeeFile();
+                    employeeManager.parseEmployeeData(data);
+                    employeeManager.listAllEmployees();
+                    //employeeManager.
+
+                    cout << "Enter the employee you want to do the appointment" << endl;
+                    getline(cin, input);
+                    usrInput = stoi(input);
+
+                    if (usrInput >= 1 && usrInput <= 5) {
+                        Employee* selectedEmployee = new Employee(employeeManager.getEmployees()[usrInput - 1]);
+
+                        string cutLength;
+                        string date;
+
+                        cout << "Enter the length you want to cut" << endl;
+                        getline(cin, cutLength);
+
+                        cout << "Enter the date of the appointment" << endl;
+                        getline(cin, date);
+
+                        Service* haircut = new Haircut("Haircut", 30, 299, selectedEmployee, cutLength);
+
+                        string phonenumber;
+                        cout << "Enter phonenumber" << endl;
+                        getline(cin, phonenumber);
+
+                        string data = reader.readFromCustomerFile();
+                        customerManager.parseCustomerData(data);
+                        Customer customer = customerManager.validateIfCustomerExists(phonenumber);
+
+                        reader.writeToAppointmentFile(customer.getInformation() + "," + haircut->getInformation() + "," + date);
+                    }
+                    break;
+                }
+
             }
         }
     }
@@ -110,13 +214,4 @@ int main()
 
     getline(cin, input);
     bookingProgram(input);
-
-    //Customer customerTuva("Tuva", "rutberg","07545291");
-    //Service* Fillers1 = new Fillers("fillers", 50, 30, 1, "mun", new Employee("Petra","filler-queen"));
-
-    //Appointment appointment;
-    //string result = appointment.addAppointment(customerTuva, Fillers1, "2001-02-22,14:50");
-
-    //FileReader reader;
-    //reader.writeToAppointmentFile(result);  
 }

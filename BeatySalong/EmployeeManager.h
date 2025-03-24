@@ -14,5 +14,7 @@ public:
     void parseEmployeeData(const string& employeeFileResult);
     void listAllEmployees() const;
 
+    vector<Employee> getEmployees();
+
 };
 

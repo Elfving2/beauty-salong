@@ -8,10 +8,11 @@ class CustomerManager
 {
 private:
 	vector<Customer> customers;
+
 public:
 	vector<string> split(const string& str, char delimiter);
 	void parseCustomerData(const string& customerFileResult);
 	void listAllCustomers();
-	void validateIfCustomerExists(const string& phonenumber);
+	Customer validateIfCustomerExists(const string& phonenumber);
 };
 

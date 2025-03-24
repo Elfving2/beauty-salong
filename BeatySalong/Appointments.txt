@@ -1,1 +1,3 @@
-Tuva,rutberg,07545291,fillers,50,30,1,mun,Petra,filler-queen
+sebastian,elfving,0768939553,Fillers,40,500,2,ass check,Jane,Smith,40,15,2001-02-22 20:45
+matilda,elfving,0756789243,Styling,50,699,blue,red,uppsatt,Emily,White,45,20,2025-03-24
+sebastian,elfving,0768939553,Haircut,30,299,baldcut,John,Doe,30,5,2025-03-25

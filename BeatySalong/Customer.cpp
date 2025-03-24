@@ -16,6 +16,15 @@ Customer::~Customer()
 {
 }
 
+Customer& Customer::operator=(const Customer& other)
+{
+	if (this == &other) return *this;
+
+	this->firstname = other.firstname;
+	this->lastname = other.lastname;
+	this->phoneNumber = other.phoneNumber;
+}
+
 const string Customer::getPhonenumber()
 {
 	return this->phoneNumber;

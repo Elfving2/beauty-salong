@@ -17,6 +17,7 @@ public:
 	~Employee();
 	void description();
 	string getInformation();
+	Employee(const Employee & other);
 };
 
 #endif

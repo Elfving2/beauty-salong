@@ -27,3 +27,11 @@ string Employee::getInformation()
 {
     return this->firstname + "," + this->lastname + "," + to_string(this->age) + "," + to_string(this->yearsOfExperience);
 }
+
+Employee::Employee(const Employee& other)
+{
+    this->firstname = other.firstname;
+    this->lastname = other.lastname;
+    this->age = other.age;
+    this->yearsOfExperience = other.yearsOfExperience;
+}
